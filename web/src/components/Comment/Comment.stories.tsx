@@ -16,7 +16,15 @@ import type { ComponentMeta } from '@storybook/react'
 import Comment from './Comment'
 
 export const generated = () => {
-  return <Comment />
+  return (
+    <Comment
+      comment={{
+        name: 'Guy Incognito',
+        body: 'My first comment',
+        createdAt: '2020-01-01T12:34:56Z',
+      }}
+    />
+  )
 }
 
 export default {

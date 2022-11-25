@@ -1,8 +1,27 @@
-const Comment = () => {
+interface Props {
+  comment: {
+    name: string
+    body: string
+    createdAt: string
+  }
+}
+
+const formattedDate = (datetime: ConstructorParameters<typeof Date>[0]) => {
+  const parsedDate = new Date(datetime)
+  const month = parsedDate.toLocaleString('default', { month: 'long' })
+  return `${parsedDate.getDate()} ${month} ${parsedDate.getFullYear()}`
+}
+
+const Comment = ({ comment }: Props) => {
   return (
-    <div>
-      <h2>{'Comment'}</h2>
-      <p>{'Find me in ./web/src/components/Comment/Comment.tsx'}</p>
+    <div className="rounded-lg bg-gray-200 p-8">
+      <header className="flex justify-between">
+        <h2 className="font-semibold text-gray-700">{comment.name}</h2>
+        <time className="text-xs text-gray-500" dateTime={comment.createdAt}>
+          {formattedDate(comment.createdAt)}
+        </time>
+      </header>
+      <p className="mt-2 text-sm">{comment.body}</p>
     </div>
   )
 }
