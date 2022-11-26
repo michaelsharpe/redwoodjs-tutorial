@@ -37,7 +37,7 @@ export const generated = () => {
     }
   )
 
-  return <CommentForm />
+  return <CommentForm postId={1} />
 }
 
 export default {
